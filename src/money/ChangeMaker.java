@@ -12,9 +12,9 @@ public class ChangeMaker {
 		// always set return value equal to the method that you call
 		cost = uInput[0];
 		tender = uInput[1];
-		
+
 		change = ChangeCalc(cost, tender);
-		
+
 		TenderCalc(change);
 
 		// Need a method to subtract tender values from change amount.
@@ -45,35 +45,66 @@ public class ChangeMaker {
 		System.out.println(change);
 		return change;
 	}
+
 	public static void TenderCalc(double change) {
-		double numTens, changeRemainder;
+		double ten=10.0, five=5.0, one=1.0, quarter=0.25, dime=0.10, nickel=0.05, penny=0.01, changeRemainder;
 		while (change > 0.0) {
-			if (change >= 10.0) {
-				double tens = change / 10.0;
-				numTens = (int)tens;
-				changeRemainder = change - (10*tens);
-				System.out.println("The remaining change is: "+changeRemainder);
-				System.out.println("The number of Tens is: "+numTens);
-//			}
-//			if (change >= 5.0) {
-//				double fives = change / 5.0;
-//			}
-//			if (change >= 1.0) {
-//				double ones = change % 1.0;
-//			}
-//			if (change >= 0.25) {
-//				double quarters = change % 0.25;
-//			}
-//			if (change >= 0.10) {
-//				double dimes = change % 0.10;
-//			}
-//			if (change >= 0.5) {
-//				double nickels = change % 0.05;
-//			}
-//			if (change >= 0.01) {
-//				double pennies = change % 0.01;
-//			}
+			if (change >= ten) {
+				double tens = change / ten;
+				double numTens = (int)tens;
+				changeRemainder = change - (ten * numTens);
+				System.out.println("The number of tens: " + numTens);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= five) {
+				double fives = change / five;
+				double numFives = (int)fives;
+				changeRemainder = change - (five * numFives);
+				System.out.println("The number of fives: " + numFives);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= one) {
+				double ones = change / one;
+				double numOnes = (int)ones;
+				changeRemainder = change - (one * numOnes);
+				System.out.println("The number of ones: " + numOnes);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= quarter) {
+				double quarters = change / quarter;
+				double numQuarters = (int)quarters;
+				changeRemainder = change - (quarter * numQuarters);
+				System.out.println("The number of quarters: " + numQuarters);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= dime) {
+				double dimes = change / dime;
+				double numDimes = (int)dimes;
+				changeRemainder = change - (dime * numDimes);
+				System.out.println("The number of dimes: " + numDimes);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= nickel) {
+				double nickels = change / nickel;
+				double numNickels = (int)nickels;
+				changeRemainder = change - (nickel * numNickels);
+				System.out.println("The number of nickels: " + numNickels);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = changeRemainder;
+			}
+			if (change >= penny) {
+				double pennies = change / penny;
+				double numPennies = (int)pennies+1;
+				changeRemainder = change - (penny * numPennies);
+				System.out.println("The number of pennies: " + numPennies);
+				System.out.println("The remaining change is: " + changeRemainder);
+				change = 0;
+			}
 		}
-	}
 	}
 }
