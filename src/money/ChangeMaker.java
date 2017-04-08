@@ -47,58 +47,43 @@ public class ChangeMaker {
 	}
 
 	public static void TenderCalc(double change) {
-		double ten = 10.0, five = 5.0, one = 1.0, quarter = 0.25, dime = 0.10, nickel = 0.05, penny = 0.01,
-				changeRemainder;
-		while (change >= 0) {
-			if (change >= ten) {
-				double tens = change / ten;
-				double numTens = (int) tens;
-				changeRemainder = change - (ten * numTens);
-				System.out.println("The number of tens: " + numTens);
-				change = changeRemainder;			
-			}
-			else if (change >= five) {
-				double fives = change / five;
-				double numFives = (int) fives;
-				changeRemainder = change - (five * numFives);
-				System.out.println("The number of fives: " + numFives);
-				change = changeRemainder;
-			}
-			else if (change >= one) {
-				double ones = change / one;
-				double numOnes = (int) ones;
-				changeRemainder = change - (one * numOnes);
-				System.out.println("The number of ones: " + numOnes);
-				change = changeRemainder;
-			}
-			else if (change >= quarter) {
-				double quarters = change / quarter;
-				double numQuarters = (int) quarters;
-				changeRemainder = change - (quarter * numQuarters);
-				System.out.println("The number of quarters: " + numQuarters);
-				change = changeRemainder;
-			}
-			else if (change >= dime) {
-				double dimes = change / dime;
-				double numDimes = (int) dimes;
-				changeRemainder = change - (dime * numDimes);
-				System.out.println("The number of dimes: " + numDimes);
-				change = changeRemainder;
-			}
-			else if (change >= nickel) {
-				double nickels = change / nickel;
-				double numNickels = (int) nickels;
-				changeRemainder = change - (nickel * numNickels);
-				System.out.println("The number of nickels: " + numNickels);
-				change = changeRemainder;
-			}
-			else if (change >= penny) {
-				double pennies = change / penny;
-				double numPennies = (int) pennies + 1;
-				changeRemainder = change - (penny * numPennies);
-				System.out.println(changeRemainder);
-				System.out.println("The number of pennies: " + numPennies);
-				change = 0;
+		double ten = 1000, five = 500, one = 100, quarter = 25, dime = 10, nickel = 5, penny = 1;
+		double changeInt = (change);
+		changeInt *= (int) 100;
+
+		while (changeInt > 0) {
+			if (changeInt >= ten) {
+				int tens = (int) ((int) changeInt / ten);
+				System.out.println("tens: " + tens);
+				changeInt = changeInt % 1000;
+			} else if (changeInt >= five) {
+				int fives = (int) ((int) changeInt / five);
+				System.out.println("fives: " + fives);
+				changeInt %= 500;
+			} else if (changeInt >= one) {
+				int ones = (int) ((int) changeInt / one);
+				System.out.println("ones: " + ones);
+				changeInt %= 100;
+			} else if (changeInt >= quarter) {
+				int quarters = (int) ((int) changeInt / quarter);
+				System.out.println("quarters: " + quarters);
+				changeInt %= 25;
+			} else if (changeInt >= dime) {
+				int dimes = (int) ((int) changeInt / dime);
+				System.out.println("dimes: " + dimes);
+				changeInt %= 10;
+			} else if (changeInt >= nickel) {
+				int nickels = (int) ((int) changeInt / nickel);
+				System.out.println("nickels: " + nickels);
+				changeInt %= 5;
+			} else if (changeInt >= penny) {
+				double pennyRound = changeInt % 1;
+				int pennies = (int) ((int) changeInt / penny);
+				if (pennyRound - .1 > 0) {
+					pennies += 1;
+				}
+				System.out.println("pennies: " + pennies);
+				changeInt = 0;
 			}
 		}
 	}
