@@ -5,17 +5,16 @@ import java.util.*;
 public class ChangeMaker {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
-		double cost, tender, change = 0;
+		double cost, tender, change;
 		double[] uInput = new double[2];
 
-		UserInput(kb);
+		uInput = UserInput(kb);
+		// always set the array name = to the method you call to store values.
 		cost = uInput[0];
 		tender = uInput[1];
-		CalcChange(cost, tender, change);
+		change = CalcChange(cost, tender);
 
-		// Need a while loop w/ if statements that will trigger when individual
-		// tender is more than the cost.
-		// Need a method to calculate change
+		// Need a method to subtract tender values from change amount.
 
 	}// end main
 
@@ -38,8 +37,9 @@ public class ChangeMaker {
 
 	}
 
-	public static double CalcChange(double cost, double tender, double change) {
-		change = tender - cost;
+	public static double CalcChange(double cost, double tender) {
+		double change = tender - cost;
+		System.out.println(change);
 		return change;
 	}
 }
