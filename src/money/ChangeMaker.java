@@ -5,8 +5,8 @@ import java.util.*;
 public class ChangeMaker {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
-		double cost, tender, change;
-		double[] uInput = new double[2];
+		int cost, tender, change;
+		int[] uInput = new int[2];
 
 		uInput = UserInput(kb);
 		// set method return value equal to method call
@@ -19,18 +19,19 @@ public class ChangeMaker {
 
 	}// end main
 
-	public static double[] UserInput(Scanner kb) {
-		double[] uInput = new double[2];
+	public static int[] UserInput(Scanner kb) {
+		int[] uInput = new int[2];
 		System.out.println("Please enter the cost of the item: ");
-		double cost = kb.nextDouble();
+		int cost = (int)Math.round(kb.nextDouble()*100);
 		System.out.println("Please enter the amount provided by the customer: ");
-		double tender = kb.nextDouble();
+		int tender = (int)Math.round(kb.nextDouble()*100);
 		while (cost > tender) {
 			System.out.println("Error: Cost of item exceeds amount provided by customer.");
 			System.out.println("Please enter the cost of the item: ");
-			cost = kb.nextDouble();
+			cost = (int)Math.round(kb.nextDouble()*100);
 			System.out.println("Please enter the amount provided by the customer: ");
-			tender = kb.nextDouble();
+			tender = (int)Math.round(kb.nextDouble()*100);
+			
 		}
 		uInput[0] = cost;
 		uInput[1] = tender;
@@ -38,52 +39,45 @@ public class ChangeMaker {
 
 	}
 
-	public static double ChangeCalc(double cost, double tender) {
-		double change = tender - cost;
-		if (change == 0.0) {
+	public static int ChangeCalc(int cost, int tender) {
+		int change = tender - cost;
+		if (change == 0) {
 			System.out.println("No change is due.");
 		}
 		return change;
 	}
 
-	public static void TenderCalc(double change) {
-		double ten = 1000, five = 500, one = 100, quarter = 25, dime = 10, nickel = 5, penny = 1;
-		double changeInt = (change);
-		changeInt *= (int) 100;
-
-		while (changeInt > 0) {
-			if (changeInt >= ten) {
-				int tens = (int) ((int) changeInt / ten);
+	public static void TenderCalc(int change) {
+		int ten = 1000, five = 500, one = 100, quarter = 25, dime = 10, nickel = 5, penny = 1;
+		while (change > 0) {
+			if (change >= ten) {
+				int tens = change / ten;
 				System.out.println("tens: " + tens);
-				changeInt = changeInt % 1000;
-			} else if (changeInt >= five) {
-				int fives = (int) ((int) changeInt / five);
+				change %= 1000;
+			} else if (change >= five) {
+				int fives = change / five;
 				System.out.println("fives: " + fives);
-				changeInt %= 500;
-			} else if (changeInt >= one) {
-				int ones = (int) ((int) changeInt / one);
+				change %= 500;
+			} else if (change >= one) {
+				int ones = change / one;
 				System.out.println("ones: " + ones);
-				changeInt %= 100;
-			} else if (changeInt >= quarter) {
-				int quarters = (int) ((int) changeInt / quarter);
+				change %= 100;
+			} else if (change >= quarter) {
+				int quarters = change / quarter;
 				System.out.println("quarters: " + quarters);
-				changeInt %= 25;
-			} else if (changeInt >= dime) {
-				int dimes = (int) ((int) changeInt / dime);
+				change %= 25;
+			} else if (change >= dime) {
+				int dimes = change / dime;
 				System.out.println("dimes: " + dimes);
-				changeInt %= 10;
-			} else if (changeInt >= nickel) {
-				int nickels = (int) ((int) changeInt / nickel);
+				change %= 10;
+			} else if (change >= nickel) {
+				int nickels = change / nickel;
 				System.out.println("nickels: " + nickels);
-				changeInt %= 5;
-			} else if (changeInt >= penny) {
-				double pennyRound = changeInt % 1;
-				int pennies = (int) ((int) changeInt / penny);
-				if (pennyRound - .1 > 0) {
-					pennies += 1;
-				}
+				change %= 5;
+			} else {
+				int pennies = change / penny;
 				System.out.println("pennies: " + pennies);
-				changeInt = 0;
+				change %= 1;
 			}
 		}
 	}
