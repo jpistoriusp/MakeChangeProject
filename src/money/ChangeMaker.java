@@ -22,16 +22,16 @@ public class ChangeMaker {
 	public static int[] UserInput(Scanner kb) {
 		int[] uInput = new int[2];
 		System.out.println("Please enter the cost of the item: ");
-		int cost = (int)Math.round(kb.nextDouble()*100);
+		int cost = (int) Math.round(kb.nextDouble() * 100);
 		System.out.println("Please enter the amount provided by the customer: ");
-		int tender = (int)Math.round(kb.nextDouble()*100);
+		int tender = (int) Math.round(kb.nextDouble() * 100);
 		while (cost > tender) {
 			System.out.println("Error: Cost of item exceeds amount provided by customer.");
 			System.out.println("Please enter the cost of the item: ");
-			cost = (int)Math.round(kb.nextDouble()*100);
+			cost = (int) Math.round(kb.nextDouble() * 100);
 			System.out.println("Please enter the amount provided by the customer: ");
-			tender = (int)Math.round(kb.nextDouble()*100);
-			
+			tender = (int) Math.round(kb.nextDouble() * 100);
+
 		}
 		uInput[0] = cost;
 		uInput[1] = tender;
@@ -51,33 +51,61 @@ public class ChangeMaker {
 		int ten = 1000, five = 500, one = 100, quarter = 25, dime = 10, nickel = 5, penny = 1;
 		while (change > 0) {
 			if (change >= ten) {
-				int tens = change / ten;
-				System.out.println("tens: " + tens);
-				change %= 1000;
+				int numTens = change / ten;
+				if (numTens == 1) {
+					System.out.println(numTens + " ten dollar bill");
+				} else {
+					System.out.println(numTens + " ten dollar bills");
+				}
+				change %= ten;
 			} else if (change >= five) {
-				int fives = change / five;
-				System.out.println("fives: " + fives);
-				change %= 500;
+				int numFives = change / five;
+				if (numFives == 1) {
+					System.out.println(numFives + " five dollar bill");
+				} else {
+					System.out.println(numFives + " five dollar bills");
+				}
+				change %= five;
 			} else if (change >= one) {
-				int ones = change / one;
-				System.out.println("ones: " + ones);
-				change %= 100;
+				int numOnes = change / one;
+				if (numOnes == 1) {
+					System.out.println(numOnes + " one dollar bill");
+				} else {
+					System.out.println(numOnes + " one dollar bills");
+				}
+				change %= one;
 			} else if (change >= quarter) {
-				int quarters = change / quarter;
-				System.out.println("quarters: " + quarters);
-				change %= 25;
+				int numQuarters = change / quarter;
+				if (numQuarters == 1) {
+					System.out.println(numQuarters + " quarter");
+				} else {
+					System.out.println(numQuarters + " quarters");
+				}
+				change %= quarter;
 			} else if (change >= dime) {
-				int dimes = change / dime;
-				System.out.println("dimes: " + dimes);
-				change %= 10;
+				int numDimes = change / dime;
+				if (numDimes == 1) {
+					System.out.println(numDimes + " dime");
+				} else {
+					System.out.println(numDimes + " dimes");
+				}
+				change %= dime;
 			} else if (change >= nickel) {
-				int nickels = change / nickel;
-				System.out.println("nickels: " + nickels);
-				change %= 5;
+				int numNickels = change / nickel;
+				if (numNickels == 1) {
+					System.out.println(numNickels + " nickel");
+				} else {
+					System.out.println(numNickels + " nickels");
+				}
+				change %= nickel;
 			} else {
-				int pennies = change / penny;
-				System.out.println("pennies: " + pennies);
-				change %= 1;
+				int numPennies = change / penny;
+				if (numPennies == 1) {
+					System.out.println(numPennies + " penny");
+				} else {
+					System.out.println(numPennies + " pennies");
+				}
+				change %= penny;
 			}
 		}
 	}
